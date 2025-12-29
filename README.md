@@ -8,7 +8,9 @@ With the continuous expansion of texture sample data, texture tactile models nee
 
 In the preliminary work [Chen D, Ding Y, Gao P, et al. Multi dimensional Texture Haptic Cross modal Generation and Display Method based on Bi Mamba Network [J]. IEEE Transactions on Instrumentation and Measurement, 2025], we constructed a multidimensional texture tactile rendering model based on multimodal data (texture images and user interaction information) to generate real-time acceleration and friction signals for user interaction with virtual textures. On this basis, this study made structural improvements and introduced a continuous learning strategy based on replay mechanism. The overall architecture is shown in the following figure.
 
-
+<p align="center">
+  <img src="fig1.png" alt="fig1" width="900"/>
+</p>
 
 (a) Initial training phase
 In the initial training phase, the system receives multimodal input data from the initial samples, including texture images, pressing force, and sliding speed. Texture images are extracted with high-level visual features using ResNet50 network, and their dimensions are adjusted to be consistent with temporal modes through linear layer mapping. The interactive action signals (based on pressure and sliding speed) are segmented and normalized through sliding windows to ensure comparability and stability of the temporal inputs. Subsequently, multi-modal features are fused in parallel and input into the Bi Mamba encoder for deep feature extraction. Finally, the deep features are mapped back to the temporal space through a decoder to generate acceleration and friction signals, completing the training of the initial tactile rendering network and constructing the initial pre training model.
