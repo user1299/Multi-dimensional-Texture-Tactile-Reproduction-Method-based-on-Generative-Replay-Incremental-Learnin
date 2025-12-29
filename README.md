@@ -32,7 +32,7 @@ utils/dataprocess.py
 
 
 
-(a) Initial training phase
+### (a) Initial training phase
 In the initial training phase, the system receives multimodal input data from the initial samples, including texture images, pressing force, and sliding speed. Texture images are extracted with high-level visual features using ResNet50 network, and their dimensions are adjusted to be consistent with temporal modes through linear layer mapping. The interactive action signals (based on pressure and sliding speed) are segmented and normalized through sliding windows to ensure comparability and stability of the temporal inputs. Subsequently, multi-modal features are fused in parallel and input into the Bi Mamba encoder for deep feature extraction. Finally, the deep features are mapped back to the temporal space through a decoder to generate acceleration and friction signals, completing the training of the initial tactile rendering network and constructing the initial pre training model.
 
 
@@ -40,8 +40,8 @@ In the initial training phase, the system receives multimodal input data from th
 
 
 
-(b) Incremental learning stage
-To cope with the continuous addition of new texture samples and dynamic changes in interactive scenes in practical applications, we further constructed an incremental learning stage. At this stage, the model is synchronously trained through the joint input of replay samples in the buffer and newly added texture samples. To optimize the incremental learning process, we introduced adapter and discriminator modules. The adapter enhances the model's adaptability to new data distributions, allowing it to maintain stable perception of learned textures while learning new texture features. By updating the lightweight parameters of the adapter, it is possible to effectively avoid damaging the learned knowledge representation in the backbone network, thereby significantly alleviating catastrophic forgetting. At the same time, the discriminator distinguishes and constrains the authenticity of the output during the generation of tactile signals, further improving the accuracy and physical consistency of tactile signals. In order to maintain the stability of learned features, the feature extraction module and encoder parameters are frozen at this stage, allowing only newly added lightweight structures to participate in training, thereby avoiding disturbing the learned texture features and tactile mapping relationship. Through the collaborative effect of cache, adapter, and discriminator, the model can still access old task data while learning new tasks, effectively reducing the risk of forgetting caused by distribution drift, and maintaining stable memory of old knowledge while continuously learning new knowledge, significantly enhancing the stability and anti forgetting ability of the model in the long-term learning process.
+### (b) Incremental learning stage
+To cope with the continuous addition of new texture samples and dynamic changes in interactive scenes in practical applications, we further constructed an incremental learning stage. 
 On this basis, an adapter module is introduced to learn finite characteristic parameters in dynamic tactile data, and to achieve adaptive updates of the model to the distribution of new input data and dynamic interaction scenarios without damaging the pre training weights of the backbone network. Specifically, the adapter is embedded between the pre trained base layer (feature extraction module and encoder) and the task specific layer (decoder and discriminator), capturing the difference information between different data distributions through a small number of trainable parameters, thereby enhancing its plasticity and generalization ability to dynamic inputs while maintaining model stability.
 
 
