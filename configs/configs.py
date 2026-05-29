@@ -4,12 +4,12 @@ def add_parser(parser):
     parser.add_argument('--d_model', type=int, default=64, help='Sequence Elements embedding dimension')
     parser.add_argument('--d_ff', type=int, default=128, help='Second Embedded representation')
     parser.add_argument('--bi_dir', type=int, default=1, help='use bidirectional Mamba?')
-    parser.add_argument('--d_state', type=int, default=16, help='d_state parameter of Mamba')#1-32   ¸ß
+    parser.add_argument('--d_state', type=int, default=16, help='d_state parameter of Mamba')#1-32   Â¸ÃŸ
     parser.add_argument('--d_conv', type=int, default=4, help='d_conv parameter of Mamba')#1-4
     parser.add_argument('--e_fact', type=int, default=1, help='expand factor parameter of Mamba')
 
     parser.add_argument('--e_layers', type=int, default=1, help='layers of encoder')
-    parser.add_argument('--dropout', type=float, default=0.2, help='dropout')#0.2-0.4, step=0.05   µÍ
+    parser.add_argument('--dropout', type=float, default=0.2, help='dropout')#0.2-0.4, step=0.05   ÂµÃ
     parser.add_argument('--activation', type=str, default='gelu', help='gelu,relu')
     parser.add_argument('--use_cpu', default=False, action='store_true', help='use gpu')
     parser.add_argument('--gpu', type=int, default=1, help='gpu')
@@ -71,6 +71,7 @@ def add_parser(parser):
                         help='use fixed or learned Position Encoding')
     parser.add_argument('--residual',       type=int,       default=1,          help='residual connection?')
     parser.add_argument('--deform_patch', default=False, action="store_true", help='deform_patch')
+
 
 
 
