@@ -6,7 +6,6 @@ import os
 from torch.utils.data import DataLoader, TensorDataset
 import copy
 
-
 class ReplayBuffer:
 
     def __init__(self, max_size=1000):
