@@ -4,7 +4,6 @@ from PIL import Image
 import torchvision.models as models
 import torch.nn as nn
 
-
 def make_model(device):
     model = models.resnet50(weights=models.ResNet50_Weights.IMAGENET1K_V1)
     model = model.eval().to(device)
