@@ -65,7 +65,6 @@ def prepare_task_data(data_folder, seq_len, pred_len, device):
 
     return X_tensor, Y_tensor, scaler
 
-
 def load_pretrained_model(args, device):
     print("Loading pretrained model...")
 
