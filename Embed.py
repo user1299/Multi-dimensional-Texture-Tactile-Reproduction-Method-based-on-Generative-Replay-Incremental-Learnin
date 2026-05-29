@@ -4,7 +4,6 @@ import torch.nn.functional as F
 from torch.nn.utils import weight_norm
 import math
 
-
 #
 class TruncateModule(nn.Module):
     def __init__(self, target_length):
