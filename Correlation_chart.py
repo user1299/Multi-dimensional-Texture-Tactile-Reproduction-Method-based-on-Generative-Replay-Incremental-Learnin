@@ -24,3 +24,4 @@ save_path = r'/SATA2/DY/bimamba2/predictions/comparison_plot.png'
 plt.savefig(save_path)
 print(f"图像已保存至 {save_path}，请检查文件。")
 
+
