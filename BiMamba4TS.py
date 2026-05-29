@@ -7,6 +7,7 @@ from einops import rearrange
 from mamba_ssm import Mamba
 
 
+
 class Model(nn.Module):
     def __init__(self, configs, corr=None):
         super(Model, self).__init__()
