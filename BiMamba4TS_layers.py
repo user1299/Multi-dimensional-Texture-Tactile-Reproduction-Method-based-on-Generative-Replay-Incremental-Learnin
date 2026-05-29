@@ -1,6 +1,5 @@
 import torch.nn as nn
 
-
 class Add_Norm(nn.Module):
     def __init__(self, d_model, dropout, residual, drop_flag=1):
         super(Add_Norm, self).__init__()
